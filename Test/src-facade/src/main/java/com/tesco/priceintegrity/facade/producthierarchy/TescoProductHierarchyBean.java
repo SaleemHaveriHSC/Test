@@ -10,6 +10,15 @@ public class TescoProductHierarchyBean {
     String subcls;
     String dept;
     String ean;
+    int count=0;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public String getTpnc() {
         return tpnc;
