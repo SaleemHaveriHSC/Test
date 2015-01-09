@@ -9,13 +9,18 @@ import com.tesco.priceintegrity.episysapi.EpisysWSPortType;
 
 public class EpisysPortHandle {
 
-    private static EpisysWSPortType episysService;
+    /*private static EpisysWSPortType episysService;*/
 
     public static EpisysWSPortType getEpisysService() {
-        return episysService;
+        try {
+            return new EpisysWSLocator().getEpisysWSHttpSoap12Endpoint();
+        }catch (javax.xml.rpc.ServiceException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 
-    public static void setEpisysService(EpisysWSPortType episysService) {
+    /*public static void setEpisysService(EpisysWSPortType episysService) {
         EpisysPortHandle.episysService = episysService;
     }
 
@@ -28,6 +33,6 @@ public class EpisysPortHandle {
         }catch (javax.xml.rpc.ServiceException ex) {
             ex.printStackTrace();
         }
-    }
+    }*/
 
 }
