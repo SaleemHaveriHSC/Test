@@ -1,5 +1,6 @@
 package com.tesco.priceintegrity.common.tools;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,12 +20,19 @@ public class ConfigurationReader {
 
         inputFileName = fileName;
         properties = new Properties();
-        StringBuilder filePath = new StringBuilder("D:\\PriceIntegrity\\src-facade\\src\\main\\java\\com\\tesco\\priceintegrity\\common\\resources");
-        filePath.append("\\").append(fileName);
+        //StringBuilder filePath = new StringBuilder("D:\\PriceIntegrity\\src-facade\\src\\main\\java\\com\\tesco\\priceintegrity\\common\\resources");
+        //filePath.append("\\").append(fileName);
+        StringBuilder filePath = new StringBuilder("");
+        filePath.append("/").append(fileName);
+
         try {
-            InputStream inputStream = new FileInputStream(filePath.toString());
+            //System.out.println(Thread.currentThread().getContextClassLoader().getResource("").toURI());
+            File file = new File(new File(Thread.currentThread().getContextClassLoader().getResource("").toURI()), filePath.toString());
+            InputStream inputStream = new FileInputStream(file);
             properties.load(inputStream);
         } catch (IOException ex) {
+            ex.printStackTrace();
+        }catch (java.net.URISyntaxException ex) {
             ex.printStackTrace();
         }
 

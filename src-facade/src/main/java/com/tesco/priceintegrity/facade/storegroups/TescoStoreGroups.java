@@ -22,7 +22,7 @@ public class TescoStoreGroups {
 
     public void serviceInitialise(){
 
-        EpisysPortHandle.getEpisysPort();
+        EpisysPortHandle.getEpisysService();
     }
 
 

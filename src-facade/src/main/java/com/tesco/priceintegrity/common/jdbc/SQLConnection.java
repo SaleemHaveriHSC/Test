@@ -16,7 +16,7 @@ public class SQLConnection {
     private static String databaseURL;
     private static String dbUsername;
     private static String dbPassword;
-    private static Connection connection;
+    //private static Connection connection;
 
     private static void getDBParameters() {
         ConfigurationReader configurationReader = new ConfigurationReader();
@@ -29,7 +29,7 @@ public class SQLConnection {
     }
 
     public static Connection getDBConnection(){
-
+        Connection connection = null;
         try {
             if(connection == null || connection.isClosed()) {
                 getDBParameters();
@@ -42,5 +42,20 @@ public class SQLConnection {
             ex.printStackTrace();
         }
         return connection;
+    }
+
+/*    public static void main(String[] args){
+        Connection connection = getDBConnection();
+        closeDBConnection(connection);
+    }*/
+
+    public static void closeDBConnection(Connection connection){
+        try {
+            if(connection != null || connection.isClosed() == false) {
+                connection.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }

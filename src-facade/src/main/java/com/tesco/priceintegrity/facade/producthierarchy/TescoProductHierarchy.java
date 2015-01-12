@@ -12,7 +12,7 @@ public class TescoProductHierarchy {
     private ProductHierarchyItem[] prodHierItemList;
 
     public void initialize(int sizeOfProdHierItemList ) {
-        EpisysPortHandle.getEpisysPort();
+        //EpisysPortHandle.getEpisysService();
         prodHierItemList = new ProductHierarchyItem[sizeOfProdHierItemList];
     }
 

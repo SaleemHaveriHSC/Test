@@ -1,6 +1,8 @@
 package com.tesco.priceintegrity.junits;
 
-import com.tesco.priceintegrity.junits.producthierarchy.ProductHierarchyUnitTests;
+import com.tesco.priceintegrity.junits.productcontent.TescoProductContentUnitTests;
+import com.tesco.priceintegrity.junits.producthierarchy.TescoProductHierarchyUnitTests;
+import com.tesco.priceintegrity.junits.storegroups.TescoStoreGroupsUnitTests;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
@@ -12,7 +14,7 @@ import java.text.NumberFormat;
  */
 public class JunitRunner {
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(ProductHierarchyUnitTests.class);
+        Result result = JUnitCore.runClasses(TescoStoreGroupsUnitTests.class, TescoProductHierarchyUnitTests.class, TescoProductContentUnitTests.class);
         int failPlusIgnore = result.getFailureCount() + result.getIgnoreCount();
 
         System.out.println("\nSummary of Test Execution");

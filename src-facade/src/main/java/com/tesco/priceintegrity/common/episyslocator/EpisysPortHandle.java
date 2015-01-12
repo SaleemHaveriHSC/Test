@@ -13,7 +13,7 @@ public class EpisysPortHandle {
 
     public static EpisysWSPortType getEpisysService() {
         try {
-            return new EpisysWSLocator().getEpisysWSHttpSoap12Endpoint();
+            return (new EpisysWSLocator().getEpisysWSHttpSoap12Endpoint());
         }catch (javax.xml.rpc.ServiceException ex) {
             ex.printStackTrace();
         }
