@@ -6,11 +6,10 @@ import com.tesco.priceintegrity.common.tools.ConfigurationReader;
 import com.tesco.priceintegrity.facade.productcontent.TescoProductContent;
 import org.junit.*;
 
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -34,7 +33,7 @@ public class TescoProductContentUnitTests {
     }
 
     @Test
-    public void createContentTest()
+    public void createProductContentTest()
     {
         String actualResult="";
         int  statusReturnCode;
@@ -43,7 +42,7 @@ public class TescoProductContentUnitTests {
             ConfigurationReader configurationReader = new ConfigurationReader();
             String fileName = "TestResult.config";
             TescoProductContent productContentObject = new TescoProductContent();
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.PRODUCT_CONTENT_SELECT_PRD_CD);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.CHECK_PRODUCT_CONTENT_CODE);
             statusReturnCode = productContentObject.createProductContent();
             preparedStatement.setString(1, productContentObject.getProductCode());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -66,7 +65,7 @@ public class TescoProductContentUnitTests {
     }
 
     @Test
-    public void updateContentTest()
+    public void updateProductContentTest()
     {
         String actualResult="";
         int  statusReturnCode;
@@ -74,7 +73,7 @@ public class TescoProductContentUnitTests {
             ConfigurationReader configurationReader = new ConfigurationReader();
             String fileName = "TestResult.config";
             TescoProductContent productContentObject = new TescoProductContent();
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.PRODUCT_CONTENT_SELECT_NEW_VALUE);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.CHECK_PRODUCT_CONTENT_VALUE);
             statusReturnCode=productContentObject.updateProductContent();
             preparedStatement.setString(1, productContentObject.getProductCode());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -94,7 +93,7 @@ public class TescoProductContentUnitTests {
     }
 
     @Test
-    public void deleteContentTest()
+    public void deleteProductContentTest()
     {
         String actualResult="";
         int  statusReturnCode;
@@ -102,7 +101,7 @@ public class TescoProductContentUnitTests {
             ConfigurationReader configurationReader = new ConfigurationReader();
             String fileName = "TestResult.config";
             TescoProductContent productContentObject = new TescoProductContent();
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.PRODUCT_CONTENT_SELECT_NEW_VALUE);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.CHECK_PRODUCT_CONTENT_VALUE);
             statusReturnCode=productContentObject.deleteProductContent();
             preparedStatement.setString(1, productContentObject.getProductCode());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -123,7 +122,7 @@ public class TescoProductContentUnitTests {
     }
 
     @Test
-    public void upsertContentTest()
+    public void upsertProductContentTest()
     {
         String actualResult="";
         int  statusReturnCode;
@@ -131,7 +130,7 @@ public class TescoProductContentUnitTests {
             ConfigurationReader configurationReader = new ConfigurationReader();
             String fileName = "TestResult.config";
             TescoProductContent productContentObject = new TescoProductContent();
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.PRODUCT_CONTENT_SELECT_PRD_CD);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.CHECK_PRODUCT_CONTENT_CODE);
             statusReturnCode=productContentObject.upsertProductContent();
             preparedStatement.setString(1, productContentObject.getProductCode());
             ResultSet resultSet = preparedStatement.executeQuery();

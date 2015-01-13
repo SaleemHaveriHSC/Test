@@ -44,7 +44,7 @@ public class TescoProductHierarchyUnitTests {
         PreparedStatement createStatement;
 
         try {
-            createStatement = connection.prepareStatement(SQLQueries.CREATE_QUERY_PRODUCT_HIERARCHY);
+            createStatement = connection.prepareStatement(SQLQueries.CHECK_CREATE_PRODUCT_HIERARCHY);
             createStatement.setString(1,configurationReader.getValue(fileName, "productCode"));
             resultSet = createStatement.executeQuery();
 
@@ -62,7 +62,7 @@ public class TescoProductHierarchyUnitTests {
         assertEquals("0", productHierarchy.createProductHierarchy());
 
         try {
-            createStatement = connection.prepareStatement(SQLQueries.CREATE_QUERY_PRODUCT_HIERARCHY);
+            createStatement = connection.prepareStatement(SQLQueries.CHECK_CREATE_PRODUCT_HIERARCHY);
             createStatement.setString(1, configurationReader.getValue(fileName, "productCode"));
             resultSet = createStatement.executeQuery();
 
@@ -89,7 +89,7 @@ public class TescoProductHierarchyUnitTests {
         assertEquals("0", productHierarchy.updateProductHierarchy());
 
         try {
-            updateStatement = connection.prepareStatement(SQLQueries.UPDATE_QUERY_PRODUCT_HIERARCHY);
+            updateStatement = connection.prepareStatement(SQLQueries.CHECK_UPDATE_PRODUCT_HIERARCHY);
             updateStatement.setString(1,configurationReader.getValue(fileName, "productCode"));
             resultSet = updateStatement.executeQuery();
 
@@ -116,7 +116,7 @@ public class TescoProductHierarchyUnitTests {
         assertEquals("0", productHierarchy.deleteProductHierarchy());
 
         try {
-            deleteStatement = connection.prepareStatement(SQLQueries.DELETE_QUERY_PRODUCT_HIERARCHY);
+            deleteStatement = connection.prepareStatement(SQLQueries.CHECK_DELETE_PRODUCT_HIERARCHY);
             deleteStatement.setString(1,configurationReader.getValue(fileName, "productCode"));
             resultSet = deleteStatement.executeQuery();
 
@@ -143,7 +143,7 @@ public class TescoProductHierarchyUnitTests {
         assertEquals("0", productHierarchy.upsertProductHierarchy());
 
         try {
-            upserteStatement = connection.prepareStatement(SQLQueries.UPSERT_QUERY_PRODUCT_HIERARCHY);
+            upserteStatement = connection.prepareStatement(SQLQueries.CHECK_UPSERT_PRODUCT_HIERARCHY);
             upserteStatement.setString(1, configurationReader.getValue(fileName, "productCode"));
             resultSet = upserteStatement.executeQuery();
 

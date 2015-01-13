@@ -49,7 +49,7 @@ public class TescoStoreGroupsUnitTests {
         String storeGroupID = configurationReader.getValue(filename,"StoreGroupID");
 
         try {
-            PreparedStatement prepStatement = connection.prepareStatement(SQLQueries.CREATE_QUERY_STORE_GROUP);
+            PreparedStatement prepStatement = connection.prepareStatement(SQLQueries.CHECK_CREATE_STORE_GROUP);
             prepStatement.setInt(1, Integer.parseInt(storeGroupID));
             System.out.println(prepStatement.toString());
 
@@ -88,7 +88,7 @@ public class TescoStoreGroupsUnitTests {
         assertEquals(0, tescoStoreGroups.upsertStoreTest());
 
         try {
-            PreparedStatement prepStatement = connection.prepareStatement(SQLQueries.UPSERT_QUERY_STORE_GROUP);
+            PreparedStatement prepStatement = connection.prepareStatement(SQLQueries.CHECK_UPSERT_STORE_GROUP);
             prepStatement.setInt(1, Integer.parseInt(storeGroupID));
             System.out.println(prepStatement.toString());
 
@@ -120,7 +120,7 @@ public class TescoStoreGroupsUnitTests {
         String storeGroupID = configurationReader.getValue(filename, "StoreGroupID");
 
         try {
-            PreparedStatement prepStatement = connection.prepareStatement(SQLQueries.UPDATE_QUERY_STORE_GROUP);
+            PreparedStatement prepStatement = connection.prepareStatement(SQLQueries.CHECK_UPDATE_STORE_GROUP);
             prepStatement.setInt(1, Integer.parseInt(storeGroupID));
             System.out.println(prepStatement.toString());
 
@@ -158,7 +158,7 @@ public class TescoStoreGroupsUnitTests {
         //Connection connection = SQLConnection.getDBConnection();
 
         try {
-            PreparedStatement prepStatement = connection.prepareStatement(SQLQueries.DELETE_QUERY_STORE_GROUP);
+            PreparedStatement prepStatement = connection.prepareStatement(SQLQueries.CHECK_DELETE_STORE_GROUP);
             prepStatement.setInt(1, Integer.parseInt(storeGroupID));
             System.out.println(prepStatement.toString());
 

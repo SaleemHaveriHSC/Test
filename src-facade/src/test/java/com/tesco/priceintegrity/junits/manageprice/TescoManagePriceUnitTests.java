@@ -1,20 +1,15 @@
 package com.tesco.priceintegrity.junits.manageprice;
 
-import com.sun.org.apache.xpath.internal.operations.*;
-import com.sun.org.apache.xpath.internal.operations.String;
-
 import com.tesco.priceintegrity.common.jdbc.SQLConnection;
 import com.tesco.priceintegrity.common.sql.SQLQueries;
 import com.tesco.priceintegrity.common.tools.ConfigurationReader;
 import com.tesco.priceintegrity.facade.manageprice.TescoManagePrice;
 import org.junit.*;
-import javax.xml.crypto.Data;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import org.junit.Assert.*;
-import org.junit.runners.model.Statement;
 
 
 /**
@@ -46,7 +41,7 @@ public class TescoManagePriceUnitTests {
         float dbPrice=0f;
         float expectedResult = Float.parseFloat(configurationReader.getValue(fileName,"price"));
         Integer priceUID = Integer.parseInt(configurationReader.getValue(fileName,"priceUID"));
-        java.lang.String sqlQuery = SQLQueries.MANAGE_PRICE_SELECT_PRICE;
+        java.lang.String sqlQuery = SQLQueries.CHECK_PRODUCT_PRICE;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setInt(1,priceUID);
@@ -78,7 +73,7 @@ public class TescoManagePriceUnitTests {
         float dbPrice=0f;
         float expectedResult = Float.parseFloat(configurationReader.getValue(fileName,"price"));
         Integer priceUID = Integer.parseInt(configurationReader.getValue(fileName,"priceUID"));
-        java.lang.String sqlQuery = SQLQueries.MANAGE_PRICE_SELECT_PRICE;
+        java.lang.String sqlQuery = SQLQueries.CHECK_PRODUCT_PRICE;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setInt(1,priceUID);
@@ -107,7 +102,7 @@ public class TescoManagePriceUnitTests {
 
         int count = 0;
         Integer priceUID = Integer.parseInt(configurationReader.getValue(fileName, "priceUID"));
-        java.lang.String sqlQuery = SQLQueries.MANAGE_PRICE_SELECT_COUNT;
+        java.lang.String sqlQuery = SQLQueries.CHECK_PRICE_COUNT;
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sqlQuery);
@@ -133,7 +128,7 @@ public class TescoManagePriceUnitTests {
         float dbPrice=0f;
         float expectedResult = Float.parseFloat(configurationReader.getValue(fileName,"price"));
         Integer priceUID = Integer.parseInt(configurationReader.getValue(fileName, "priceUID"));
-        java.lang.String sqlQuery = SQLQueries.MANAGE_PRICE_SELECT_PRICE;
+        java.lang.String sqlQuery = SQLQueries.CHECK_PRODUCT_PRICE;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setInt(1,priceUID);
