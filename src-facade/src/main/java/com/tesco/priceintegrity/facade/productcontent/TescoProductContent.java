@@ -1,5 +1,6 @@
 package com.tesco.priceintegrity.facade.productcontent;
 
+import com.tesco.priceintegrity.common.episyslocator.EpisysPortHandle;
 import com.tesco.priceintegrity.common.tools.ConfigurationReader;
 import com.tesco.priceintegrity.episysapi.*;
 import org.junit.Test;
@@ -19,26 +20,14 @@ import java.sql.*;
  */
 
 public class TescoProductContent {
-    EpisysWSPortType service = getEpisysWSPortType();
-    ValidationResult result = new ValidationResult();
 
      String contentNewValue = "";
      Integer  messageType;
      String productCode = "";
 
-    public EpisysWSPortType getEpisysWSPortType() {
-
-        try {
-            EpisysWSLocator locator = new EpisysWSLocator();
-            EpisysWSPortType service = locator.getEpisysWSHttpSoap12Endpoint();
-            return service;
-        }
-        catch (javax.xml.rpc.ServiceException ex) {
-            ex.printStackTrace();
-        }
-        return service;
-    }
    public int createProductContent() {
+
+       ValidationResult result = null;
 
        try {
            ConfigurationReader configurationReader = new ConfigurationReader();
@@ -69,7 +58,7 @@ public class TescoProductContent {
            //CONTENT DATA CREATION
            ContentDataItem[] contentDataItems = new ContentDataItem[1];
            contentDataItems[0] = contentDataItem;
-           result = service.updateContent(contentDataItems);
+           result = EpisysPortHandle.getEpisysService().updateContent(contentDataItems);
         }
          catch (java.rmi.RemoteException ex) {
              System.out.println("Create Product Content error message is"+ex.getMessage());
@@ -80,6 +69,9 @@ public class TescoProductContent {
 
     }
     public int updateProductContent() {
+
+        ValidationResult result = null;
+
         try {
             ConfigurationReader configurationReader = new ConfigurationReader();
             String fileName = "ProductContentUpdateData.config";
@@ -109,7 +101,7 @@ public class TescoProductContent {
             //CONTENT DATA CREATION
             ContentDataItem[] contentDataItems = new ContentDataItem[1];
             contentDataItems[0] = contentDataItem;
-            result = service.updateContent(contentDataItems);
+            result = EpisysPortHandle.getEpisysService().updateContent(contentDataItems);
 
         } catch (java.rmi.RemoteException ex) {
             System.out.println("Update Product Content error message is"+ex.getMessage());
@@ -119,6 +111,9 @@ public class TescoProductContent {
         return result.getStatusCode();
     }
     public int deleteProductContent() {
+
+        ValidationResult result = null;
+
         try {
             ConfigurationReader configurationReader = new ConfigurationReader();
             String fileName = "ProductContentDeleteData.config";
@@ -148,7 +143,7 @@ public class TescoProductContent {
             //CONTENT DATA CREATION
             ContentDataItem[] contentDataItems = new ContentDataItem[1];
             contentDataItems[0] = contentDataItem;
-            result = service.deleteContent(contentDataItems);
+            result = EpisysPortHandle.getEpisysService().deleteContent(contentDataItems);
 
         }  catch (java.rmi.RemoteException ex) {
             System.out.println("Delete Product Content error message is"+ex.getMessage());
@@ -158,6 +153,9 @@ public class TescoProductContent {
         return result.getStatusCode();
     }
     public int upsertProductContent() {
+
+        ValidationResult result = null;
+
         try {
             ConfigurationReader configurationReader = new ConfigurationReader();
             String fileName = "ProductContentUpsertData.config";
@@ -187,7 +185,7 @@ public class TescoProductContent {
             //CONTENT DATA CREATION
             ContentDataItem[] contentDataItems = new ContentDataItem[1];
             contentDataItems[0] = contentDataItem;
-            result = service.updateContent(contentDataItems);
+            result = EpisysPortHandle.getEpisysService().updateContent(contentDataItems);
         }
          catch (java.rmi.RemoteException ex) {
              System.out.println("Upsert Product Content error message is"+ex.getMessage());
@@ -224,7 +222,4 @@ public class TescoProductContent {
     /* public static void main(String[] args){
         ProductContent obj = new ProductContent();
         obj.updateProductContent(); } */
-
-
-
 }

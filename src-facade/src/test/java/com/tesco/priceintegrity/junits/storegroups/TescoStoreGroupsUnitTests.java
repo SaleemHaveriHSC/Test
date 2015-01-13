@@ -27,18 +27,18 @@ public class TescoStoreGroupsUnitTests {
     static Connection connection = null;
 
     @BeforeClass
-    public static  void openConnection(){
+    public static  void setUpTestEnv(){
         connection = SQLConnection.getDBConnection();
     }
 
     @AfterClass
-    public static void closeDBConnection(){
+    public static void cleanUpTestEnv(){
         SQLConnection.closeDBConnection(connection);
         connection = null;
     }
 
     @Test
-    public void testDatabaseCreate() throws SQLException {
+    public void createStoreGroupTest() throws SQLException {
 
         //Connection connection = SQLConnection.getDBConnection();
 
@@ -75,7 +75,7 @@ public class TescoStoreGroupsUnitTests {
     }
 
     @Test
-    public void testDatabaseUpsert() throws SQLException {
+    public void upsertStoreGroupTest() throws SQLException {
 
         String str_grp_name = null;
         String filename = "UpsertStoreGroup.config";
@@ -111,7 +111,7 @@ public class TescoStoreGroupsUnitTests {
     }
 
     @Test
-    public void testDatabaseUpdate() throws SQLException {
+    public void updateStoreGroupTest() throws SQLException {
 
         //Connection connection = SQLConnection.getDBConnection();
         String str_grp_name = null;
@@ -145,7 +145,7 @@ public class TescoStoreGroupsUnitTests {
     }
 
     @Test
-    public void testDatabaseDelete() throws SQLException {
+    public void deleteStoreGroupTest() throws SQLException {
 
         String action = null;
 

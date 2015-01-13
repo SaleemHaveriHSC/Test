@@ -20,17 +20,19 @@ public class TescoStoreGroups {
     InputStream input = null;
 
 
+/*
     public void serviceInitialise(){
 
         EpisysPortHandle.getEpisysService();
     }
+*/
 
 
     public int createStoreTest() {
 
         //User []users = new User[length];
         int i =0;
-        serviceInitialise();
+        //serviceInitialise();
 
         int status = -1;
 
@@ -70,7 +72,7 @@ public class TescoStoreGroups {
 
     public int updateStoreTest() {
 
-        serviceInitialise();
+        //serviceInitialise();
         int status = -1;
         String filename = "UpdateStoreGroup.config";
         StoreGroupInfoItem storeGroupInfoItem = new StoreGroupInfoItem();
@@ -109,7 +111,7 @@ public class TescoStoreGroups {
 
     public int upsertStoreTest() {
 
-        serviceInitialise();
+        //serviceInitialise();
         int status = -1;
         String filename = "UpsertStoreGroup.config";
         StoreGroupInfoItem storeGroupInfoItem = new StoreGroupInfoItem();
@@ -147,7 +149,7 @@ public class TescoStoreGroups {
 
     public int deleteStoreTest() {
 
-        serviceInitialise();
+        //serviceInitialise();
         int status = -1;
         String filename = "DeleteStoreGroup.config";
 

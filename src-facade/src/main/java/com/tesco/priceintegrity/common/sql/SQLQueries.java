@@ -21,5 +21,7 @@ public class SQLQueries {
     public static String PRODUCT_CONTENT_SELECT_PRD_CD= "select prd_cd FROM EPISYS.EPS_CONTENT_DATA where prd_cd = ?";
     public static String PRODUCT_CONTENT_SELECT_NEW_VALUE= "select new_value FROM EPISYS.EPS_CONTENT_DATA where prd_cd = ?";
 
-
+    //SQL queries for manage price
+    public static final String MANAGE_PRICE_SELECT_PRICE = "select fld_val from episys.eps_price_dtl where prc_uid = ?";
+    public static final String MANAGE_PRICE_SELECT_COUNT = "select count(*) as count from episys.eps_price_dtl where prc_uid = ?";
 }

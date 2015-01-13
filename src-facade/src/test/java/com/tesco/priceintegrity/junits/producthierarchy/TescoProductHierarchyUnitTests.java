@@ -25,17 +25,18 @@ public class TescoProductHierarchyUnitTests {
     static Connection connection;
 
     @BeforeClass
-    public static void openDBConnection () {
+    public static void setUpTestEnv () {
         connection = SQLConnection.getDBConnection();
     }
 
     @AfterClass
-    public static void closeDBConnection() {
+    public static void cleanUpTestEnv() {
         SQLConnection.closeDBConnection(connection);
+        connection = null;
     }
 
     @Test
-    public void testCreateProductHierarchy(){
+    public void createProductHierarchyTest(){
         ConfigurationReader configurationReader = new ConfigurationReader();
         ResultSet resultSet;
         String fileName = "CreateProdHierItemTest.config";
@@ -78,7 +79,7 @@ public class TescoProductHierarchyUnitTests {
     }
 
     @Test
-    public  void testUpdateProductHierarchy() {
+    public  void updateProductHierarchyTest() {
         ConfigurationReader configurationReader = new ConfigurationReader();
         ResultSet resultSet;
         String fileName = "UpdateProdHierItemTest.config";
@@ -105,7 +106,7 @@ public class TescoProductHierarchyUnitTests {
     }
 
     @Test
-    public void testDeleteProductHierarchy() {
+    public void deleteProductHierarchyTest() {
         ConfigurationReader configurationReader = new ConfigurationReader();
         ResultSet resultSet;
         PreparedStatement deleteStatement;
@@ -132,7 +133,7 @@ public class TescoProductHierarchyUnitTests {
     }
 
     @Test
-    public void testUpsertProductHierarchy() {
+    public void upsertProductHierarchyTest() {
         ConfigurationReader configurationReader = new ConfigurationReader();
         ResultSet resultSet;
         PreparedStatement upserteStatement;
